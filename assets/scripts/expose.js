@@ -12,12 +12,15 @@ function init() {
   let volumeSlider = document.getElementById('volume-controls');
   let selection = document.getElementById('horn-select');
 
+  let audioDisplay = document.querySelector("audio");
 
+  //When you select a horn from the drop down menu
   selection.addEventListener('change', (event) => {
     // code to run when the event is triggered
     let imageDisplay = document.getElementsByTagName("img")[0];
-    let audioDisplay = document.querySelector(".hidden");
     let hornName = event.target.value;
+    //The correct image should display
+    //The correct audio sound file should be set
     if(hornName == "air-horn"){
       imageDisplay.src = "assets/images/air-horn.svg";
       audioDisplay.src = "assets/audio/air-horn.mp3";
@@ -31,10 +34,13 @@ function init() {
   
   });
 
-  volumeSlider.addEventListener('input', (event) => {//change', (event) => {
+  //When you change the volume on the slider
+  volumeSlider.addEventListener('input', (event) => {
     let volumeNum = event.target.value;
     let volumeIcon = document.getElementsByTagName('img')[1];
 
+    //The correct volume icon should be set
+    //The corresponding volume should be set for the audio element 
     if(volumeNum == 0){
       volumeIcon.src = "assets/icons/volume-level-0.svg";
     }else if(1<=volumeNum && volumeNum<33){
@@ -45,18 +51,18 @@ function init() {
       volumeIcon.src = "assets/icons/volume-level-3.svg";
     }
 
+    let audio = document.getElementsByTagName("audio")[0];
+    audio.volume = volumeNum/100;
+
   });
 
   playButton.addEventListener('click', (event) => {
-    let audio = document.querySelector(".hidden");
-
-    audio.load();
-    audio.play();
+    audioDisplay.load();
+    audioDisplay.play();
 
     //if(volumeSlider.value == "part-horn"){
-    if(audio.getAttribute("src") === "assets/audio/party-horn.mp3") {
+    if(audioDisplay.getAttribute("src") === "assets/audio/party-horn.mp3") {
       jsConfetti.addConfetti();
-      jsConfetti.clearCanvas();
     }
 
   });
