@@ -5,19 +5,19 @@ window.addEventListener('DOMContentLoaded', init);
 function init() {
   // TODO
   //const jsConfetti = new JSConfetti();
-  let canvas = document.getElementById("#expose");
+  let canvas = document.getElementById('#expose');
   const jsConfetti = new JSConfetti({ canvas });
 
   let playButton = document.getElementsByTagName('button')[0];
   let volumeSlider = document.getElementById('volume-controls');
   let selection = document.getElementById('horn-select');
 
-  let audioDisplay = document.querySelector("audio");
+  let audioDisplay = document.querySelector('audio');
 
   //When you select a horn from the drop down menu
   selection.addEventListener('change', (event) => {
     // code to run when the event is triggered
-    let imageDisplay = document.getElementsByTagName("img")[0];
+    let imageDisplay = document.getElementsByTagName('img')[0];
     let hornName = event.target.value;
     //The correct image should display
     //The correct audio sound file should be set
@@ -42,17 +42,16 @@ function init() {
     //The correct volume icon should be set
     if(volumeNum == 0){
       volumeIcon.src = "assets/icons/volume-level-0.svg";
-    }else if(1<=volumeNum && volumeNum<33){
+    }else if(volumeNum<33){
       volumeIcon.src = "assets/icons/volume-level-1.svg";
-    }else if(33<=volumeNum && volumeNum<67){
+    }else if(volumeNum<67){
       volumeIcon.src = "assets/icons/volume-level-2.svg";
-    }else if(volumeNum>=67 && volumeNum<100){
+    }else if(volumeNum<100){
       volumeIcon.src = "assets/icons/volume-level-3.svg";
     }
 
     //The corresponding volume should be set for the audio element 
-    let audio = document.getElementsByTagName("audio")[0];
-    audio.volume = volumeNum/100;
+    audioDisplay.volume = volumeNum/100;
 
   });
 
@@ -63,8 +62,7 @@ function init() {
     audioDisplay.play();
 
     //If the Party Horn is selected, confetti should shoot out out
-    //if(volumeSlider.value == "part-horn"){
-    if(audioDisplay.getAttribute("src") === "assets/audio/party-horn.mp3") {
+    if(selection.value == "party-horn"){
       jsConfetti.addConfetti();
     }
 
