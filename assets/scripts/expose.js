@@ -40,7 +40,6 @@ function init() {
     let volumeIcon = document.getElementsByTagName('img')[1];
 
     //The correct volume icon should be set
-    //The corresponding volume should be set for the audio element 
     if(volumeNum == 0){
       volumeIcon.src = "assets/icons/volume-level-0.svg";
     }else if(1<=volumeNum && volumeNum<33){
@@ -51,15 +50,19 @@ function init() {
       volumeIcon.src = "assets/icons/volume-level-3.svg";
     }
 
+    //The corresponding volume should be set for the audio element 
     let audio = document.getElementsByTagName("audio")[0];
     audio.volume = volumeNum/100;
 
   });
 
+  //When you click the “Play Sound” button 
   playButton.addEventListener('click', (event) => {
+    //The corresponding sound for the horn selected should play out loud at the specified volume
     audioDisplay.load();
     audioDisplay.play();
 
+    //If the Party Horn is selected, confetti should shoot out out
     //if(volumeSlider.value == "part-horn"){
     if(audioDisplay.getAttribute("src") === "assets/audio/party-horn.mp3") {
       jsConfetti.addConfetti();
