@@ -31,7 +31,7 @@ function init() {
   
   });
 
-  volumeSlider.addEventListener('change', (event) => {
+  volumeSlider.addEventListener('input', (event) => {//change', (event) => {
     let volumeNum = event.target.value;
     let volumeIcon = document.getElementsByTagName('img')[1];
 
@@ -47,7 +47,7 @@ function init() {
 
   });
 
-  playButton.addEventListener('click', async() => {//(event) => {
+  playButton.addEventListener('click', (event) => {
     let audio = document.querySelector(".hidden");
 
     audio.load();
