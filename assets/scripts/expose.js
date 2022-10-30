@@ -8,16 +8,17 @@ function init() {
   let canvas = document.getElementById('#expose');
   const jsConfetti = new JSConfetti({ canvas });
 
-  let playButton = document.getElementsByTagName('button')[0];
+  let playButton = document.querySelector('button');//getElementsByTagName('button');
   let volumeSlider = document.getElementById('volume-controls');
   let selection = document.getElementById('horn-select');
 
-  let audioDisplay = document.querySelector('audio');
+  //let audioDisplay = document.querySelector('audio');
 
   //When you select a horn from the drop down menu
   selection.addEventListener('change', (event) => {
     // code to run when the event is triggered
     let imageDisplay = document.getElementsByTagName('img')[0];
+    let audioDisplay = document.querySelector('audio');
     let hornName = event.target.value;
     //The correct image should display
     //The correct audio sound file should be set
@@ -58,6 +59,7 @@ function init() {
   //When you click the “Play Sound” button 
   playButton.addEventListener('click', (event) => {
     //The corresponding sound for the horn selected should play out loud at the specified volume
+    let audioDisplay = document.querySelector('audio');
     audioDisplay.load();
     audioDisplay.play();
 
