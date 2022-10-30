@@ -39,7 +39,7 @@ function init() {
   volumeSlider.addEventListener('input', (event) => {
     let volumeNum = event.target.value;
     let volumeIcon = document.getElementsByTagName('img')[1];
-
+    
     //The correct volume icon should be set
     if(volumeNum == 0){
       volumeIcon.src = "assets/icons/volume-level-0.svg";
@@ -51,6 +51,7 @@ function init() {
       volumeIcon.src = "assets/icons/volume-level-3.svg";
     }
 
+    let audioDisplay = document.querySelector('audio');
     //The corresponding volume should be set for the audio element 
     audioDisplay.volume = volumeNum/100;
 
