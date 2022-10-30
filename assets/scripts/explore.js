@@ -7,7 +7,7 @@ function init() {
   let talkButton = document.getElementsByTagName('button')[0];
   let selection = document.getElementById('voice-select');
   let inputTxt = document.getElementById('text-to-speak');
-  let imageDisplay = document.getElementsByTagName('image')[0];
+  let imageDisplay = document.getElementsByTagName('img')[0];
 
   const synth = window.speechSynthesis;
   let voices = [];
@@ -47,7 +47,8 @@ function init() {
     }
 
     synth.speak(utterThis);
-    
+    utterThis.addEventListener('start',() => imageDisplay.src = "assets/images/smiling-open.png");
+    utterThis.addEventListener('end',() => imageDisplay.src = "assets/images/smiling.png");
     
     
   })
